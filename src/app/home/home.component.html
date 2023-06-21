@@ -1,0 +1,21 @@
+<div class="courses-panel">
+  <div class="header">
+    <h2 class="title">My Files</h2>
+
+    <button mat-mini-fab routerLink="/add-new-file">
+      <mat-icon class="add-course-btn">add</mat-icon>
+    </button>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Photos">
+      <app-files-card-list [files]="(photoFiles$ | async) ?? []">
+      </app-files-card-list>
+    </mat-tab>
+
+    <mat-tab label="Documents">
+      <app-files-card-list [files]="(documentFiles$ | async) ?? []">
+      </app-files-card-list>
+    </mat-tab>
+  </mat-tab-group>
+</div>
