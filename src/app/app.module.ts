@@ -32,6 +32,7 @@ import { LoginComponent } from './login/login.component';
 import { FilesCardListComponent } from './files-card-list/files-card-list.component';
 import { UploadComponent } from './upload/upload.component';
 import { FilesService } from './files.service';
+import { OnlyOneErrorPipe } from './only-one-error.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FilesService } from './files.service';
     LoginComponent,
     FilesCardListComponent,
     UploadComponent,
+    OnlyOneErrorPipe,
   ],
   imports: [
     BrowserModule,

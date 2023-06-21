@@ -1,52 +1,54 @@
-<mat-card>
-  <input
-    type="file"
-    class="file-input"
-    (change)="handleFileInput($event)"
-    #fileUpload
-  />
+<mat-card class="file-upload-card">
+  <div class="container">
+    <input
+      type="file"
+      class="file-input"
+      (change)="handleFileInput($event)"
+      #fileUpload
+    />
 
-  <form
-    [formGroup]="uploadForm"
-    (ngSubmit)="uploadForm.valid && handleUpload()"
-  >
-    <div class="file-upload">
-      <mat-form-field>
-        <input matInput [disabled]="true" [value]="fileName" />
-      </mat-form-field>
+    <form
+      [formGroup]="uploadForm"
+      (ngSubmit)="uploadForm.valid && handleUpload()"
+    >
+      <div class="file-upload">
+        <mat-form-field>
+          <input matInput [disabled]="true" [value]="fileName" />
+        </mat-form-field>
 
-      <mat-form-field class="input-field">
-        <input matInput placeholder="Title" formControlName="title" />
-      </mat-form-field>
+        <mat-form-field class="input-field">
+          <input matInput placeholder="Title" formControlName="title" />
+        </mat-form-field>
 
-      <mat-form-field class="input-field">
-        <textarea
-          matInput
-          placeholder="Description"
-          formControlName="description"
-        ></textarea>
-      </mat-form-field>
+        <mat-form-field class="input-field">
+          <textarea
+            matInput
+            placeholder="Description"
+            formControlName="description"
+          ></textarea>
+        </mat-form-field>
 
-      <button
-        mat-mini-fab
-        color="primary"
-        class="upload-btn"
-        type="button"
-        (click)="fileUpload.click()"
-      >
-        <mat-icon>attach_file</mat-icon>
-      </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          class="upload-btn"
+          type="button"
+          (click)="fileUpload.click()"
+        >
+          <mat-icon>attach_file</mat-icon>
+        </button>
 
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        [disabled]="!uploadForm.valid"
-      >
-        Upload
-      </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!uploadForm.valid"
+        >
+          Upload
+        </button>
 
-      <p class="error-message" *ngIf="uploadError">{{ uploadError }}</p>
-    </div>
-  </form>
+        <p class="error-message" *ngIf="uploadError">{{ uploadError }}</p>
+      </div>
+    </form>
+  </div>
 </mat-card>
