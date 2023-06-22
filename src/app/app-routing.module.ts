@@ -6,7 +6,7 @@ import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'files',
     component: HomeComponent,
   },
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '/login',
   },
 ];
 

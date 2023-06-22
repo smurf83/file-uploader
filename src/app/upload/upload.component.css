@@ -47,6 +47,12 @@
     justify-content: center;
     height: 100%;
   }
+
+  .form-element {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
   
   
   

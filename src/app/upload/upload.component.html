@@ -1,54 +1,65 @@
 <mat-card class="file-upload-card">
-  <div class="container">
-    <input
-      type="file"
-      class="file-input"
-      (change)="handleFileInput($event)"
-      #fileUpload
-    />
-
+  <mat-card-content>
     <form
       [formGroup]="uploadForm"
       (ngSubmit)="uploadForm.valid && handleUpload()"
     >
       <div class="file-upload">
-        <mat-form-field>
-          <input matInput [disabled]="true" [value]="fileName" />
-        </mat-form-field>
+        <div class="form-element">
+          <input
+            type="file"
+            class="file-input"
+            (change)="handleFileInput($event)"
+            #fileUpload
+          />
+          <button
+            mat-mini-fab
+            color="primary"
+            class="upload-btn"
+            type="button"
+            (click)="fileUpload.click()"
+          >
+            <mat-icon>attach_file</mat-icon>
+          </button>
+        </div>
 
-        <mat-form-field class="input-field">
-          <input matInput placeholder="Title" formControlName="title" />
-        </mat-form-field>
+        <div class="form-element">
+          <mat-form-field>
+            <input matInput [disabled]="true" [value]="fileName" />
+          </mat-form-field>
+        </div>
 
-        <mat-form-field class="input-field">
-          <textarea
-            matInput
-            placeholder="Description"
-            formControlName="description"
-          ></textarea>
-        </mat-form-field>
+        <div class="form-element">
+          <mat-form-field class="input-field">
+            <input matInput placeholder="Title" formControlName="title" />
+          </mat-form-field>
+        </div>
 
-        <button
-          mat-mini-fab
-          color="primary"
-          class="upload-btn"
-          type="button"
-          (click)="fileUpload.click()"
-        >
-          <mat-icon>attach_file</mat-icon>
-        </button>
+        <div class="form-element">
+          <mat-form-field class="input-field">
+            <textarea
+              matInput
+              placeholder="Description"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+        </div>
 
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="!uploadForm.valid"
-        >
-          Upload
-        </button>
+        <div class="form-element">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!uploadForm.valid"
+          >
+            Upload
+          </button>
+        </div>
 
-        <p class="error-message" *ngIf="uploadError">{{ uploadError }}</p>
+        <div class="form-element">
+          <p class="error-message" *ngIf="uploadError">{{ uploadError }}</p>
+        </div>
       </div>
     </form>
-  </div>
+  </mat-card-content>
 </mat-card>

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
     this.photoFiles$ = files$.pipe(
       map((files) =>
-        files.filter((file) => {
+        files.filter((file: File) => {
           const extensions = ['.jpg', '.png'];
           return extensions.some((ext) =>
             file.name.toLowerCase().includes(ext)
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
     this.documentFiles$ = files$.pipe(
       map((files) =>
-        files.filter((file) => {
+        files.filter((file: File) => {
           const extensions = ['.txt', '.pdf', '.doc', '.docx', '.rtf'];
           return extensions.some((ext) =>
             file.name.toLowerCase().includes(ext)

@@ -33,6 +33,7 @@ import { FilesCardListComponent } from './files-card-list/files-card-list.compon
 import { UploadComponent } from './upload/upload.component';
 import { FilesService } from './files.service';
 import { OnlyOneErrorPipe } from './only-one-error.pipe';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { OnlyOneErrorPipe } from './only-one-error.pipe';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSnackBarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     AppRoutingModule,
