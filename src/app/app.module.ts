@@ -34,6 +34,7 @@ import { UploadComponent } from './upload/upload.component';
 import { FilesService } from './files.service';
 import { OnlyOneErrorPipe } from './only-one-error.pipe';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UploadStepComponent } from './upload-step/upload-step.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FilesCardListComponent,
     UploadComponent,
     OnlyOneErrorPipe,
+    UploadStepComponent,
   ],
   imports: [
     BrowserModule,

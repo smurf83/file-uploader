@@ -1,0 +1,22 @@
+<mat-horizontal-stepper #stepper>
+  <ng-template matStepperIcon="edit">
+    <mat-icon>check</mat-icon>
+  </ng-template>
+
+  <mat-step [stepControl]="uploadForm">
+    <div class="margin-top"></div>
+    <ng-template matStepLabel>Choose Type</ng-template>
+    <p>Choose a Photo or Document</p>
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Select File</ng-template>
+    <p>Select the File to upload</p>
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Submit</ng-template>
+    <p>Review and Submit the file</p>
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+</mat-horizontal-stepper>
