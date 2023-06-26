@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { UploadStepComponent } from './upload-step/upload-step.component';
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'add-new-file',
-    component: UploadStepComponent,
+    component: UploadComponent,
   },
   {
     path: 'login',

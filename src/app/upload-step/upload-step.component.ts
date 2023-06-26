@@ -19,7 +19,15 @@ export class UploadStepComponent implements AfterViewInit {
     this.stepperService.stepper = this.stepper;
   }
 
-  get uploadForm(): UntypedFormGroup {
-    return this.uploadComponent?.uploadForm || null;
+  get uploadForm(): FormGroup {
+    return this.uploadComponent?.uploadForm || new FormGroup({});
+  }
+
+  handleFileInput(event: any) {
+    this.uploadComponent.handleFileInput(event);
+  }
+
+  handleUpload() {
+    this.uploadComponent.handleUpload();
   }
 }

@@ -1,22 +1,44 @@
-<mat-horizontal-stepper #stepper>
-  <ng-template matStepperIcon="edit">
-    <mat-icon>check</mat-icon>
-  </ng-template>
+<div *ngIf="uploadForm">
+  <mat-horizontal-stepper #stepper>
+    <ng-template matStepperIcon="edit">
+      <mat-icon>check</mat-icon>
+    </ng-template>
+    <app-upload #uploadComponent></app-upload>
 
-  <mat-step [stepControl]="uploadForm">
-    <div class="margin-top"></div>
-    <ng-template matStepLabel>Choose Type</ng-template>
-    <p>Choose a Photo or Document</p>
-    <button mat-button matStepperNext>Next</button>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Select File</ng-template>
-    <p>Select the File to upload</p>
-    <button mat-button matStepperNext>Next</button>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Submit</ng-template>
-    <p>Review and Submit the file</p>
-    <button mat-button matStepperNext>Next</button>
-  </mat-step>
-</mat-horizontal-stepper>
+    <mat-step [stepControl]="uploadForm.get('fileType')?.value">
+      <ng-template matStepLabel>Choose Type</ng-template>
+      <mat-radio-group formControlName="fileType">
+        <mat-radio-button value="photo">Photo</mat-radio-button>
+        <mat-radio-button value="document">Document</mat-radio-button>
+      </mat-radio-group>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="uploadForm.get('file')?.value">
+      <ng-template matStepLabel>Select File</ng-template>
+      <input
+        type="file"
+        formControlName="file"
+        (change)="handleFileInput($event)"
+      />
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="uploadForm.get('title')?.value">
+      <ng-template matStepLabel>Submit</ng-template>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="handleUpload()">Upload</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
