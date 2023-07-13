@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DocumentFile } from '../files.service';
 
 @Component({
   selector: 'app-files-card-list',
@@ -8,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class FilesCardListComponent {
   @Input()
-  files!: File[];
+  files!: DocumentFile[];
 
   constructor(private dialog: MatDialog) {}
 }

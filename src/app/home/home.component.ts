@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { FilesService } from '../files.service';
+import { DocumentFile, FilesService } from '../files.service';
 
 @Component({
   selector: 'app-home',
@@ -8,32 +8,36 @@ import { FilesService } from '../files.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  photoFiles$!: Observable<File[]>;
+  photoFiles$!: Observable<DocumentFile[]>;
 
-  documentFiles$!: Observable<File[]>;
+  documentFiles$!: Observable<DocumentFile[]>;
 
   constructor(private filesService: FilesService) {}
 
   ngOnInit(): void {
     const files$ = this.filesService.findAllFiles();
 
+    this.filesService.findAllFiles().subscribe((data) => {
+      console.log(data);
+    });
+
     this.photoFiles$ = files$.pipe(
-      map((files) =>
-        files.filter((file: File) => {
+      map((files: DocumentFile[]) =>
+        files.filter((file: DocumentFile) => {
           const extensions = ['.jpg', '.png'];
           return extensions.some((ext) =>
-            file.name.toLowerCase().includes(ext)
+            file?.file?.name?.toLowerCase().includes(ext)
           );
         })
       )
     );
 
     this.documentFiles$ = files$.pipe(
-      map((files) =>
-        files.filter((file: File) => {
+      map((files: DocumentFile[]) =>
+        files.filter((file: DocumentFile) => {
           const extensions = ['.txt', '.pdf', '.doc', '.docx', '.rtf'];
           return extensions.some((ext) =>
-            file.name.toLowerCase().includes(ext)
+            file?.file?.name?.toLowerCase().includes(ext)
           );
         })
       )
