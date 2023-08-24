@@ -25,9 +25,7 @@ export class HomeComponent implements OnInit {
       map((files: DocumentFile[]) =>
         files.filter((file: DocumentFile) => {
           const extensions = ['.jpg', '.png'];
-          return extensions.some((ext) =>
-            file?.file?.name?.toLowerCase().includes(ext)
-          );
+          return extensions.includes(file?.file?.extension);
         })
       )
     );
@@ -36,9 +34,7 @@ export class HomeComponent implements OnInit {
       map((files: DocumentFile[]) =>
         files.filter((file: DocumentFile) => {
           const extensions = ['.txt', '.pdf', '.doc', '.docx', '.rtf'];
-          return extensions.some((ext) =>
-            file?.file?.name?.toLowerCase().includes(ext)
-          );
+          return extensions.includes(file?.file?.extension);
         })
       )
     );

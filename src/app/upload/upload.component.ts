@@ -32,31 +32,24 @@ export class UploadComponent implements OnInit {
   }
 
   handleUpload() {
-    if (this.selectedFile) {
-      this.filesService.selectedUpload = {
-        file: this.selectedFile,
-        title: this.uploadForm.value.title,
-        description: this.uploadForm.value.description,
-      };
-    } else {
+    if (!this.selectedFile) {
       this.uploadError = 'No file selected for upload.';
+      return;
     }
 
-    const upload = this.filesService.selectedUpload;
+    const title = this.uploadForm.value.title;
+    const description = this.uploadForm.value.description;
 
-    if (upload) {
-      this.filesService
-        .createFile(upload.file, upload.title, upload.description)
-        .subscribe({
-          next: (res) => {
-            console.log(res);
-            this.uploadError = '';
-            this.filesService.selectedUpload = null;
-          },
-          error: (err) => {
-            this.uploadError = err.error.message;
-          },
-        });
-    }
+    this.filesService
+      .createFile(this.selectedFile, title, description)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.uploadError = '';
+        },
+        error: (err) => {
+          this.uploadError = err.error.message;
+        },
+      });
   }
 }

@@ -2,17 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-// export interface UploadFile {
-//   file: File;
-//   title: string;
-//   description: string;
-// }
-
 export interface DocumentFile {
-  file: File;
   id?: number;
   title: string;
   description: string;
+  file: {
+    data: string;
+    extension: string;
+  };
 }
 
 @Injectable({
